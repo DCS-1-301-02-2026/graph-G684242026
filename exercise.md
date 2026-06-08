@@ -12,8 +12,10 @@
 digraph {
     rankdir = "LR";
     node [shape=box];
-
-    "     コンピュータリテラシー    " -> "   プログラミングI  ";
+    "     情報工学概論    " ->"   プログラミング基礎Ⅰ  "
+    "     情報工学概論    " -> "  計算機工学  "->"   論理回路　";
+"     基礎ゼミ    " -> "   プログラミング基礎Ⅰ  "->"   プログラミング基礎Ⅱ　";
+    "     コンピュータリテラシー    " -> "   プログラミングI  "->"   プログラミングⅡ　";
 }
 ```
 
@@ -27,6 +29,24 @@ digraph {
 @startwbs ex02
 * 拓殖大学
 ** 商学部
+*** 経営学科
+*** 国際ビジネス学科
+*** 会計学科
+** 政経学部
+*** 法律政治学科
+*** 経済学科
+** 外国語学部
+*** 英米語学科
+*** 中国語学科
+*** スペイン語学科
+*** 国際日本語学科
+** 工学部
+*** 機械しすてむ工学科
+*** 電子システム工学科
+*** 情報工学科
+*** デザイン学科
+** 国際学部
+*** 国際学科
 @endwbs
 ```
 
@@ -40,10 +60,25 @@ digraph {
 @startuml ex03
 left to right direction
 actor 学生 as student
+actor "教員" as faculty
 rectangle {
+    usecase "ていしゅつ結果の採点” as sai
+    usecase "リモートリポジトリにpush" as ri
+    usecase "修正のコミット” as ko
+    usecase "修正をステージに上げる” as st
+    usecase "課題ファイルの修正” as kd
+    usecase "リポジトリのクローン” as rk
     usecase "課題の受領" as uc2
+    usecase "課題の登録" as hikakinn
 }
+kd <-- faculty
 student --> uc2
+student --> rk
+student --> ko
+student --> st
+student --> ri
+student --> hikakinn
+sai<-- faculty
 @enduml
 ```
 
@@ -52,13 +87,23 @@ student --> uc2
 「有向グラフ」「WBS」「ユースケース図」のどれかを使って，
 独自の図解を作成せよ．対象は自由に決めてよいが，
 誰かのコピーにならないように留意せよ．
-
+# 伝わらない話
+```graphviz
+digraph {
+    rankdir = "LR";
+    node [shape=box];
+## 伝わない話
+ 
+    "     疑問    " -> "   理由 "->"   賛成か反対　";
+}
 ```
+
+
 ```
 
 
 ## チェック
-- [ ] 課題 3.1 有向グラフ
-- [ ] 課題 3.2 WBS
-- [ ] 課題 3.3 ユースケース図
-- [ ] 課題 3.4 オリジナルの図解
+- [x] 課題 3.1 有向グラフ
+- [x] 課題 3.2 WBS
+- [x] 課題 3.3 ユースケース図
+- [x] 課題 3.4 オリジナルの図解
